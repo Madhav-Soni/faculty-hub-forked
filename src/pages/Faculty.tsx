@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Search, Filter, Users, Mail, Briefcase, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
-import Header from "@/components/Header";
 
 interface Faculty {
   id: string;
@@ -62,8 +61,6 @@ const Faculty = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
-      <Header />
-
       <div className="container mx-auto px-4 py-12">
         {/* Page Header */}
         <div className="mb-8">

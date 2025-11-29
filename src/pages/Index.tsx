@@ -2,12 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Search, Upload, Users, FileText, BookOpen, Award } from "lucide-react";
 import { Link } from "react-router-dom";
-import Header from "@/components/Header";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
-      <Header />
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-16">

@@ -88,7 +88,7 @@ const Header = ({ showNav = true }: HeaderProps) => {
             <Link to="/faculty" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Faculty
             </Link>
-            <Link to="/departments" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/department" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Departments
             </Link>
             <Link to="/upload" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

@@ -8,6 +8,10 @@ import Auth from "./pages/Auth";
 import Faculty from "./pages/Faculty";
 import FacultyProfile from "./pages/FacultyProfile";
 import NotFound from "./pages/NotFound";
+import Department from "./pages/Department";
+import DepartmentDetails from "./pages/DepartmentDetails";
+import Upload from "./pages/Upload";
+import MainLayout from "./components/MainLayout";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +22,15 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/faculty" element={<Faculty />} />
+            <Route path="/faculty/:id" element={<FacultyProfile />} />
+            <Route path="/department" element={<Department />} />
+            <Route path="/department/:departmentId" element={<DepartmentDetails />} />
+            <Route path="/upload" element={<Upload />} />
+          </Route>
           <Route path="/auth" element={<Auth />} />
-          <Route path="/faculty" element={<Faculty />} />
-          <Route path="/faculty/:id" element={<FacultyProfile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
