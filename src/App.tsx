@@ -10,7 +10,8 @@ import FacultyProfile from "./pages/FacultyProfile";
 import NotFound from "./pages/NotFound";
 import Department from "./pages/Department";
 import DepartmentDetails from "./pages/DepartmentDetails";
-import Upload from "./pages/Upload";
+import AddFaculty from "./pages/AddFaculty";
+import EditFaculty from "./pages/EditFaculty";
 import MainLayout from "./components/MainLayout";
 
 const queryClient = new QueryClient();
@@ -26,9 +27,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/faculty/:id" element={<FacultyProfile />} />
+            <Route path="/faculty/edit/:id" element={<EditFaculty />} />
             <Route path="/department" element={<Department />} />
             <Route path="/department/:departmentId" element={<DepartmentDetails />} />
-            <Route path="/upload" element={<Upload />} />
+            <Route path="/add-faculty" element={<AddFaculty />} />
           </Route>
           <Route path="/auth" element={<Auth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
