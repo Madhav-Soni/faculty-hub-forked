@@ -2,37 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Search, Upload, Users, FileText, BookOpen, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "@/components/Header";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <Users className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <h1 className="text-2xl font-serif font-bold text-foreground">FEIMS</h1>
-          </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/faculty" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Faculty
-            </Link>
-            <Link to="/departments" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Departments
-            </Link>
-            <Link to="/upload" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Upload
-            </Link>
-          </nav>
-          <Link to="/auth">
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Get Started
-            </Button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-16">

@@ -5,19 +5,28 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Users, Mail, Lock, ArrowLeft } from "lucide-react";
+import { Users, Mail, Lock, ArrowLeft, UserCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
 const emailSchema = z.string().email("Invalid email address");
-const passwordSchema = z.string().min(6, "Password must be at least 6 characters");
+const passwordSchema = z
+  .string()
+  .min(8, "Password must be at least 8 characters")
+  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+  .regex(/[0-9]/, "Password must contain at least one number")
+  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
+
+const nameSchema = z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters");
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -52,6 +61,14 @@ const Auth = () => {
       return false;
     }
 
+    if (!isLogin) {
+      const nameResult = nameSchema.safeParse(name);
+      if (!nameResult.success) {
+        toast.error(nameResult.error.errors[0].message);
+        return false;
+      }
+    }
+
     return true;
   };
 
@@ -67,6 +84,9 @@ const Auth = () => {
         password,
         options: {
           emailRedirectTo: redirectUrl,
+          data: {
+            name: name,
+          },
         },
       });
 
@@ -158,6 +178,26 @@ const Auth = () => {
 
         {/* Form */}
         <form onSubmit={isLogin ? handleLogin : handleSignUp} className="space-y-4">
+          {!isLogin && (
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-sm font-medium">
+                Full Name
+              </Label>
+              <div className="relative">
+                <UserCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="pl-10"
+                  required
+                />
+              </div>
+            </div>
+          )}
+
           <div className="space-y-2">
             <Label htmlFor="email" className="text-sm font-medium">
               Email
@@ -193,9 +233,14 @@ const Auth = () => {
               />
             </div>
             {!isLogin && (
-              <p className="text-xs text-muted-foreground">
-                Password must be at least 6 characters
-              </p>
+              <div className="text-xs text-muted-foreground space-y-1 mt-2">
+                <p>Password must contain:</p>
+                <ul className="list-disc list-inside space-y-0.5 ml-2">
+                  <li>At least 8 characters</li>
+                  <li>One uppercase and one lowercase letter</li>
+                  <li>One number and one special character</li>
+                </ul>
+              </div>
             )}
           </div>
 

@@ -9,6 +9,7 @@ import {
   FileText, ArrowLeft, Calendar, ExternalLink 
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import Header from "@/components/Header";
 
 interface FacultyData {
   id: string;
@@ -121,17 +122,7 @@ const FacultyProfile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <Users className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <h1 className="text-2xl font-serif font-bold text-foreground">FEIMS</h1>
-          </Link>
-        </div>
-      </header>
+      <Header showNav={false} />
 
       <div className="container mx-auto px-4 py-12">
         {/* Back Button */}
