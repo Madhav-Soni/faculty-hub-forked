@@ -26,9 +26,11 @@ const Index = () => {
               Upload
             </Link>
           </nav>
-          <Button size="sm" className="bg-primary hover:bg-primary/90">
-            Get Started
-          </Button>
+          <Link to="/auth">
+            <Button size="sm" className="bg-primary hover:bg-primary/90">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </header>
 
@@ -47,14 +49,18 @@ const Index = () => {
             Streamline administrative workflows for universities.
           </p>
           <div className="flex items-center justify-center gap-4 pt-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 h-12 px-8">
-              <Upload className="w-5 h-5 mr-2" />
-              Upload Documents
-            </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8">
-              <Search className="w-5 h-5 mr-2" />
-              Browse Faculty
-            </Button>
+            <Link to="/auth">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 h-12 px-8">
+                <Upload className="w-5 h-5 mr-2" />
+                Upload Documents
+              </Button>
+            </Link>
+            <Link to="/faculty">
+              <Button size="lg" variant="outline" className="h-12 px-8">
+                <Search className="w-5 h-5 mr-2" />
+                Browse Faculty
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -125,9 +131,11 @@ const Index = () => {
           <p className="text-lg text-muted-foreground">
             Join universities already using FEIMS to streamline their administrative workflows.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 h-12 px-8">
-            Get Started Today
-          </Button>
+          <Link to="/auth">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 h-12 px-8">
+              Get Started Today
+            </Button>
+          </Link>
         </div>
       </section>
 
